@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ProductCard from "./ProductCard";
-import  Pagination from './Pagination';
+import Pagination from './Pagination';
 import Filter from './Filter';
 
 function ProductList({ products, onProductClick }) {
@@ -37,8 +37,8 @@ function ProductList({ products, onProductClick }) {
   return (
     <>
       <div className="flex flex-col items-center gap-6 mb-5">
-      <Filter/>
-      <br></br>
+        <Filter />
+        <br></br>
 
         <h2 className="text-2xl font-semibold text-white ">Todos nuestros productos</h2>
         <div className="flex justify-center flex-wrap gap-4">

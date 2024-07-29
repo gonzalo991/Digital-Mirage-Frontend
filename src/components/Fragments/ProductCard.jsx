@@ -1,6 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
 import { CartContext } from "../Context/ShoppingCartContext";
-import { Switch } from '@headlessui/react';
 import "../Css/card.css"
 
 function formatPrice(price) {

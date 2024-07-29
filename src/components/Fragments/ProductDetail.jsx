@@ -9,7 +9,7 @@ function ProductDetail() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    const endpoint = `https://back.digital-mirage.ar/productos/byid/${productId}`;
+    const endpoint = `https://digital-mirage-backend-old-shape-7317.fly.dev/productos/byid/${productId}`;
 
     axios
       .get(endpoint)
@@ -54,13 +54,13 @@ function ProductDetail() {
             </p>
             <div className="flex mt-6 items-center pb-5 border-b-2 border-gray-200 mb-5">
               <div className="flex">
-                
+
               </div>
               <div className="flex ml-6 items-center">
-               
+
                 <div className="relative">
-                  
-                
+
+
                 </div>
               </div>
             </div>
@@ -69,7 +69,7 @@ function ProductDetail() {
               <button className="flex ml-auto text-white bg-red-500 border-0 py-2 px-6 focus:outline-none hover-bg-red-600 rounded">
                 Agregar
               </button>
-           
+
             </div>
           </div>
         </div>

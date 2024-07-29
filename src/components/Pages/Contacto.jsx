@@ -5,38 +5,38 @@ import 'react-toastify/dist/ReactToastify.css';
 const Contacto = () => {
   const [formData, setFormData] = useState({ nombre: '', apellido: '', email: '', mensaje: '' });
 
-// Añade una nueva función para enviar el formulario al servidor
-const handleFormSubmit = (e) => {
-  e.preventDefault();
-  if (formData.nombre === '' || formData.apellido === '' || formData.email === '' || formData.mensaje === '') {
-    toast.error('Faltan datos. Por favor, complete todos los campos.', { autoClose: 7000 });
-  } else {
-    fetch('https://send-email.digital-mirage.ar/enviar-correo', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        if (data.message) {
-          toast.success(data.message, {
-            autoClose: 7000,
-            onClose: () => {
-              // Aquí puedes redirigir al menú principal después de que se cierre el mensaje de éxito.
-              // Por ejemplo: window.location.href = '/menu-principal';
-            },
-          });
-        } else {
-          toast.error('Hubo un problema al enviar el correo.', { autoClose: 7000 });
-        }
+  // Añade una nueva función para enviar el formulario al servidor
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    if (formData.nombre === '' || formData.apellido === '' || formData.email === '' || formData.mensaje === '') {
+      toast.error('Faltan datos. Por favor, complete todos los campos.', { autoClose: 7000 });
+    } else {
+      fetch('https://send-email.digital-mirage.ar/enviar-correo', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
       })
-      .catch((error) => {
-        toast.error('Hubo un problema al enviar el correo.', { autoClose: 7000 });
-      });
-  }
-};
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.message) {
+            toast.success(data.message, {
+              autoClose: 7000,
+              onClose: () => {
+                // Aquí puedes redirigir al menú principal después de que se cierre el mensaje de éxito.
+                // Por ejemplo: window.location.href = '/menu-principal';
+              },
+            });
+          } else {
+            toast.error('Hubo un problema al enviar el correo.', { autoClose: 7000 });
+          }
+        })
+        .catch((error) => {
+          toast.error('Hubo un problema al enviar el correo.', { autoClose: 7000 });
+        });
+    }
+  };
 
 
   const handleInputChange = (e) => {
@@ -111,7 +111,7 @@ const handleFormSubmit = (e) => {
             </div>
           </div>
         </div>
-<br></br>
+        <br></br>
         <div className="p-4 py-6 rounded-lg bg-gray-50 dark:bg-gray-800 md:p-8">
           <form onSubmit={handleFormSubmit}>
             <div className="-mx-2 md:items-center md:flex">

@@ -10,9 +10,8 @@ const LoadingScreen = () => {
 
   return (
     <div
-      className={`fixed top-0 left-0 w-full h-screen bg-gray-900 text-white flex justify-center items-center transition-opacity ${
-        visible ? "opacity-100" : "opacity-0"
-      }`}
+      className={`fixed top-0 left-0 w-full h-screen bg-gray-900 text-white flex justify-center items-center transition-opacity ${visible ? "opacity-100" : "opacity-0"
+        }`}
       style={{ transitionDuration: "3.9s" }}
     >
       <svg

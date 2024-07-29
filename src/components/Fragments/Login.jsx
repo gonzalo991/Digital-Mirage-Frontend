@@ -52,7 +52,7 @@ const Login = () => {
         ev.preventDefault();
         if (isValidPassword) {
             try {
-                const response = await axios.post('https://back.digital-mirage.ar/user/login', { username, password });
+                const response = await axios.post('https://digital-mirage-backend-old-shape-7317.fly.dev/user/login', { username, password });
                 setLogin(username);
                 console.log(`Respuesta del servidor: ${response.data}`);
                 setIsOpen(false);

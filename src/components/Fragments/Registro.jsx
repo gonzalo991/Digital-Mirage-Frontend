@@ -61,7 +61,7 @@ const Registro = () => {
 
         if (Object.values(errors).every((error) => !error)) {
             try {
-                const response = await axios.post('https://back.digital-mirage.ar/user/newuser', formData);
+                const response = await axios.post('https://digital-mirage-backend-old-shape-7317.fly.dev/user/newuser', formData);
 
                 if (response.data) {
                     alert('El formulario se envió correctamente');
@@ -211,9 +211,9 @@ const Registro = () => {
                         </form>
                     </section>
                     <footer className="modal-card-foot">
-                        <button type="submit" 
-                        className="button is-success"
-                        onClick={handleSubmit}>Registrarse</button>
+                        <button type="submit"
+                            className="button is-success"
+                            onClick={handleSubmit}>Registrarse</button>
                         <button className='button is-danger' onClick={cleanForm}>Limpiar</button>
                     </footer>
                 </div>

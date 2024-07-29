@@ -19,7 +19,7 @@ const Resultados = () => {
 
     // Realiza una solicitud HTTP para obtener la lista completa de productos desde el servidor.
     useEffect(() => {
-        axios.get("https://back.digital-mirage.ar/productos")
+        axios.get("https://digital-mirage-backend-old-shape-7317.fly.dev/productos")
             .then((response) => {
                 const data = response.data;
                 setProductos(data);

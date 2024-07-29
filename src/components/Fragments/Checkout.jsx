@@ -1,6 +1,5 @@
 import React, { useContext, useState } from "react";
 import { CartContext } from "../Context/ShoppingCartContext";
-import Select from 'react-select';
 import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import jsPDF from 'jspdf';
@@ -15,13 +14,13 @@ function formatPrice(price) {
 const placeOrder = (cart, totalPrice, selectedShippingOption) => {
   // Validación de campos obligatorios
   if (!document.getElementById('first_name').value ||
-      !document.getElementById('last_name').value ||
-      !document.getElementById('country').value ||
-      !document.getElementById('street_address').value ||
-      !document.getElementById('region').value ||
-      !document.getElementById('phone').value ||
-      !document.getElementById('email').value ||
-      !document.querySelector('input[name="enviarPedido"]:checked')) {
+    !document.getElementById('last_name').value ||
+    !document.getElementById('country').value ||
+    !document.getElementById('street_address').value ||
+    !document.getElementById('region').value ||
+    !document.getElementById('phone').value ||
+    !document.getElementById('email').value ||
+    !document.querySelector('input[name="enviarPedido"]:checked')) {
     toast.error("Faltan datos para cargar");
   } else {
     toast.success("El pedido se acaba de realizar. Ahora se descargará un PDF de tu pedido.");
@@ -158,9 +157,8 @@ function Checkout() {
                   onChange={() => handleShippingOptionChange(option)}
                 />
                 <span
-                  className={`peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white ${
-                    option === selectedShippingOption ? 'bg-blue-500' : ''
-                  }`}
+                  className={`peer-checked:border-gray-700 absolute right-4 top-1/2 box-content block h-3 w-3 -translate-y-1/2 rounded-full border-8 border-gray-300 bg-white ${option === selectedShippingOption ? 'bg-blue-500' : ''
+                    }`}
                 ></span>
                 <label
                   className="peer-checked:border-2 peer-checked:border-gray-700 peer-checked:bg-gray-50 flex cursor-pointer select-none rounded-lg border border-gray-300 p-4"
@@ -180,197 +178,197 @@ function Checkout() {
         </div>
 
         <div className="mt-10 bg-gray-50 px-4 pt-16 lg:mt-0 md:py-4 ">
-        <br></br>
-        <br></br>
-        <br></br>
+          <br></br>
+          <br></br>
+          <br></br>
 
-        <br></br>
-        <br></br>
+          <br></br>
+          <br></br>
 
           <p className="text-xl font-medium">Detalles del pago</p>
           <p className="text-gray-400">Complete su pedido proporcionando sus datos de pago.</p>
 
           {/* Payment Form */}
-    
-        
-
-           {/* Other input fields go here... */}
-
-           <label className="block text-sm font-medium mt-4 mb-2">DETALLES DE FACTURACIÓN</label>
-
-<label htmlFor="first_name" className="mt-4 mb-2 block text-sm font-medium">Nombre *</label>
-<div className="relative">
-  <input
-    type="text"
-    id="first_name"
-    name="first_name"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="Nombre"
-  />
-</div>
-
-<label htmlFor="last_name" className="mt-4 mb-2 block text-sm font-medium">Apellidos *</label>
-<div className="relative">
-  <input
-    type="text"
-    id="last_name"
-    name="last_name"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="Apellidos"
-  />
-</div>
-
-<div className="relative">
-<label htmlFor="country" className="mt-4 mb-2 block text-sm font-medium">País *</label>
-
-  <input
-    type="text"
-    id="country"
-    name="country"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="País / Región"
-  />
-</div>
-
-<label htmlFor="street_address" className="mt-4 mb-2 block text-sm font-medium">Dirección de la calle *</label>
-<div className="relative">
-  <input
-    type="text"
-    id="street_address"
-    name="street_address"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="Dirección de la calle"
-  />
-</div>
 
 
 
-<label htmlFor="region" className="mt-4 mb-2 block text-sm font-medium">Región / Provincia *</label>
-<div className="relative">
-  <input
-    type="text"
-    id="region"
-    name="region"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="Provincia / Región "
-  />
-</div>
+          {/* Other input fields go here... */}
 
-<label htmlFor="postal_code" className="mt-4 mb-2 block text-sm font-medium">Código postal *</label>
-<div className="relative">
-  <input
-    type="text"
-    id="postal_code"
-    name="postal_code"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="Código postal"
-  />
-</div>
+          <label className="block text-sm font-medium mt-4 mb-2">DETALLES DE FACTURACIÓN</label>
 
-<label htmlFor="phone" className="mt-4 mb-2 block text-sm font-medium">Teléfono *</label>
-<div className="relative">
-  <input
-    type="text"
-    id="phone"
-    name="phone"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="Teléfono"
-  />
-</div>
+          <label htmlFor="first_name" className="mt-4 mb-2 block text-sm font-medium">Nombre *</label>
+          <div className="relative">
+            <input
+              type="text"
+              id="first_name"
+              name="first_name"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="Nombre"
+            />
+          </div>
 
-<label htmlFor="email" className="mt-4 mb-2 block text-sm font-medium">Dirección de correo electrónico *</label>
-<div className="relative">
-  <input
-    type="email"
-    id="email"
-    name="email"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="Dirección de correo electrónico"
-  />
-</div>
+          <label htmlFor="last_name" className="mt-4 mb-2 block text-sm font-medium">Apellidos *</label>
+          <div className="relative">
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="Apellidos"
+            />
+          </div>
 
-<label htmlFor="dni" className="mt-4 mb-2 block text-sm font-medium">DNI (opcional)</label>
-<div className="relative">
-  <input
-    type="text"
-    id="dni"
-    name="dni"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    placeholder="DNI (opcional)"
-  />
-</div>
+          <div className="relative">
+            <label htmlFor="country" className="mt-4 mb-2 block text-sm font-medium">País *</label>
 
+            <input
+              type="text"
+              id="country"
+              name="country"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="País / Región"
+            />
+          </div>
 
-
-
-<br></br>
-<label htmlFor="order_notes" className="block text-sm font-medium">Notas del pedido (opcional)</label>
-<div className="relative">
-  <textarea
-    id="order_notes"
-    name="order_notes"
-    className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
-    rows="4"
-    placeholder="Notas del pedido (opcional)"
-  ></textarea>
-  <div className="mt-4">
-  <label className="block text-sm font-medium">¿Quieres que te enviemos al correo este pedido?</label>
-  <div className="flex space-x-4">
-    <div className="flex items-center">
-      <input
-        type="radio"
-        id="enviarPedidoSi"
-        name="enviarPedido"
-        value="si"
-        required
-      />
-      <label htmlFor="enviarPedidoSi" className="ml-2">Sí</label>
-    </div>
-    <div className="flex items-center">
-      <input
-        type="radio"
-        id="enviarPedidoNo"
-        name="enviarPedido"
-        value="no"
-        required
-      />
-      <label htmlFor="enviarPedidoNo" className="ml-2">No</label>
-    </div>
-  </div>
-</div>
-  
-  <button onClick={placeOrder} className="mt-4 mb-8 mx-auto w-medium text-center rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
-  REALIZAR PEDIDO
-</button>
-
-</div>
- 
-            {/* Total Section */}
-            <div className="mt-6 border-t border-b py-2">
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-gray-900">Subtotal</p>
-                <p className="font-semibold text-gray-900"> {formatPrice(totalPrice)}</p>
-              </div>
-              <div className="flex items-center justify-between">
-                <p className="text-sm font-medium text-gray-900">Envío</p>
-                <p className="font-semibold text-gray-900">
-                  {formatPrice(selectedShippingOption.cost)}
-                </p>
-              </div>
-            </div>
-            <div className="mt-6 flex items-center justify-between">
-              <p className="text-sm font-medium text-gray-900">Total</p>
-              <p className="text-2xl font-semibold text-gray-900">
-                {formatPrice(totalPrice + selectedShippingOption.cost)}
-              </p>
-            </div>
+          <label htmlFor="street_address" className="mt-4 mb-2 block text-sm font-medium">Dirección de la calle *</label>
+          <div className="relative">
+            <input
+              type="text"
+              id="street_address"
+              name="street_address"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="Dirección de la calle"
+            />
           </div>
 
 
+
+          <label htmlFor="region" className="mt-4 mb-2 block text-sm font-medium">Región / Provincia *</label>
+          <div className="relative">
+            <input
+              type="text"
+              id="region"
+              name="region"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="Provincia / Región "
+            />
+          </div>
+
+          <label htmlFor="postal_code" className="mt-4 mb-2 block text-sm font-medium">Código postal *</label>
+          <div className="relative">
+            <input
+              type="text"
+              id="postal_code"
+              name="postal_code"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="Código postal"
+            />
+          </div>
+
+          <label htmlFor="phone" className="mt-4 mb-2 block text-sm font-medium">Teléfono *</label>
+          <div className="relative">
+            <input
+              type="text"
+              id="phone"
+              name="phone"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="Teléfono"
+            />
+          </div>
+
+          <label htmlFor="email" className="mt-4 mb-2 block text-sm font-medium">Dirección de correo electrónico *</label>
+          <div className="relative">
+            <input
+              type="email"
+              id="email"
+              name="email"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="Dirección de correo electrónico"
+            />
+          </div>
+
+          <label htmlFor="dni" className="mt-4 mb-2 block text-sm font-medium">DNI (opcional)</label>
+          <div className="relative">
+            <input
+              type="text"
+              id="dni"
+              name="dni"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              placeholder="DNI (opcional)"
+            />
+          </div>
+
+
+
+
+          <br></br>
+          <label htmlFor="order_notes" className="block text-sm font-medium">Notas del pedido (opcional)</label>
+          <div className="relative">
+            <textarea
+              id="order_notes"
+              name="order_notes"
+              className="w-full rounded-md border border-gray-200 px-4 py-3 pl-11 text-sm shadow-sm outline-none focus:z-10 focus-border-blue-500 focus-ring-blue-500"
+              rows="4"
+              placeholder="Notas del pedido (opcional)"
+            ></textarea>
+            <div className="mt-4">
+              <label className="block text-sm font-medium">¿Quieres que te enviemos al correo este pedido?</label>
+              <div className="flex space-x-4">
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="enviarPedidoSi"
+                    name="enviarPedido"
+                    value="si"
+                    required
+                  />
+                  <label htmlFor="enviarPedidoSi" className="ml-2">Sí</label>
+                </div>
+                <div className="flex items-center">
+                  <input
+                    type="radio"
+                    id="enviarPedidoNo"
+                    name="enviarPedido"
+                    value="no"
+                    required
+                  />
+                  <label htmlFor="enviarPedidoNo" className="ml-2">No</label>
+                </div>
+              </div>
+            </div>
+
+            <button onClick={placeOrder} className="mt-4 mb-8 mx-auto w-medium text-center rounded-md bg-gray-900 px-6 py-3 font-medium text-white">
+              REALIZAR PEDIDO
+            </button>
+
+          </div>
+
+          {/* Total Section */}
+          <div className="mt-6 border-t border-b py-2">
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-medium text-gray-900">Subtotal</p>
+              <p className="font-semibold text-gray-900"> {formatPrice(totalPrice)}</p>
+            </div>
+            <div className="flex items-center justify-between">
+              <p className="text-sm font-medium text-gray-900">Envío</p>
+              <p className="font-semibold text-gray-900">
+                {formatPrice(selectedShippingOption.cost)}
+              </p>
+            </div>
+          </div>
+          <div className="mt-6 flex items-center justify-between">
+            <p className="text-sm font-medium text-gray-900">Total</p>
+            <p className="text-2xl font-semibold text-gray-900">
+              {formatPrice(totalPrice + selectedShippingOption.cost)}
+            </p>
+          </div>
         </div>
-        <ToastContainer />
+
 
       </div>
+      <ToastContainer />
+
+    </div>
   );
 }
 

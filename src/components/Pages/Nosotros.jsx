@@ -90,73 +90,73 @@ const teamMembers = [
 ];
 
 function ProfileCard({ member }) {
-    return (
-      <div  className="card bg-yellow-100 rounded-lg p-4 text-center w-64 h-85 mx-4">
-      
-        <br />
-        <img
-          src={member.imgSrc}
-          className="w-24 h-24 rounded-full transition duration-200 hover:scale-110 mx-auto"
-        />
-        <div className="text-gray-900 text-lg font-bold">{member.name}</div>
-        <div className="text-red-500 font-semibold">{member.role}</div>
-        <div className="text-gray-600">
-          {member.description}
-        </div>
-        <div className="flex items-center justify-center gap-3 mt-2 w-auto h-5 text-teal-400 ">
-          <a href={member.twitterUrl} target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faTwitter} className="fa-lg cursor-pointer transition duration-200 hover:text-red-800" />
-          </a>
-          <a href={member.linkedinUrl} target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faLinkedin} className="fa-lg cursor-pointer transition duration-200 hover:text-Red-500" />
-          </a>
-          <a href={member.githubUrl} target="_blank" rel="noopener noreferrer">
-            <FontAwesomeIcon icon={faGithub} className="fa-lg cursor-pointer transition duration-200 hover:text-Red-500" />
-          </a>
-        </div>
+  return (
+    <div className="card bg-yellow-100 rounded-lg p-4 text-center w-64 h-85 mx-4">
+
+      <br />
+      <img
+        src={member.imgSrc}
+        className="w-24 h-24 rounded-full transition duration-200 hover:scale-110 mx-auto"
+      />
+      <div className="text-gray-900 text-lg font-bold">{member.name}</div>
+      <div className="text-red-500 font-semibold">{member.role}</div>
+      <div className="text-gray-600">
+        {member.description}
       </div>
-    );
-  }
-  
+      <div className="flex items-center justify-center gap-3 mt-2 w-auto h-5 text-teal-400 ">
+        <a href={member.twitterUrl} target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faTwitter} className="fa-lg cursor-pointer transition duration-200 hover:text-red-800" />
+        </a>
+        <a href={member.linkedinUrl} target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faLinkedin} className="fa-lg cursor-pointer transition duration-200 hover:text-Red-500" />
+        </a>
+        <a href={member.githubUrl} target="_blank" rel="noopener noreferrer">
+          <FontAwesomeIcon icon={faGithub} className="fa-lg cursor-pointer transition duration-200 hover:text-Red-500" />
+        </a>
+      </div>
+    </div>
+  );
+}
+
 
 function Nosotros() {
-    const teamMembersPerRow = 4; // Cambia este valor si deseas mostrar un número diferente de tarjetas por fila.
-  
-    return (
-      <div className="flex flex-col bg-cover "
-        style={{
-          backgroundImage:
-            "url('https://img.freepik.com/free-vector/paper-style-white-monochrome-background_52683-66443.jpg?w=740&t=st=1698189757~exp=1698190357~hmac=fc5a1bc286765266e70efea41246a19832e3a038f095331e82cc66f8a2288b75')",
-        }}
-      >
-        <main className="flex-grow">
-          <div className="container mx-auto py-8 bg-cover">
-            <div className="container flex justify-center mx-auto pt-16">
-              <div>
+  const teamMembersPerRow = 4; // Cambia este valor si deseas mostrar un número diferente de tarjetas por fila.
+
+  return (
+    <div className="flex flex-col bg-cover "
+      style={{
+        backgroundImage:
+          "url('https://img.freepik.com/free-vector/paper-style-white-monochrome-background_52683-66443.jpg?w=740&t=st=1698189757~exp=1698190357~hmac=fc5a1bc286765266e70efea41246a19832e3a038f095331e82cc66f8a2288b75')",
+      }}
+    >
+      <main className="flex-grow">
+        <div className="container mx-auto py-8 bg-cover">
+          <div className="container flex justify-center mx-auto pt-16">
+            <div>
               <br></br>
-             
+
               <h1 className="xl:text-4xl sm:p-5 text-3xl text-center text-gray-800 font-extrabold pb-6 sm:w-4/6 w-5/6 mx-auto title-margin">
-  ¿Quiénes Somos?
-</h1>
-                <p className="text-gray-500 text-lg text-center font-normal pb-3">
+                ¿Quiénes Somos?
+              </h1>
+              <p className="text-gray-500 text-lg text-center font-normal pb-3">
                 Somos un equipo de estudiantes apasionados por la tecnología y comprometidos con la creación de soluciones innovadoras, buscando siempre nuevos desafíos y proyectos. Nuestro grupo está compuesto por desarrolladores en diferentes áreas, tales como desarrollo web, DevOps, desarrollo de base de datos relacionales y no relacionales.
-                </p>
-                <br />
-                <br />
-                <br />
-              </div>
-            </div>
-            <div className="flex items-center justify-center flex-wrap gap-2 px-12 mb-4">
-              {teamMembers.map((member, index) => (
-                <ProfileCard key={index} member={member} />
-              ))}
+              </p>
+              <br />
+              <br />
+              <br />
             </div>
           </div>
-        </main>
-      </div>
-      
-    );
-  }
-  
+          <div className="flex items-center justify-center flex-wrap gap-2 px-12 mb-4">
+            {teamMembers.map((member, index) => (
+              <ProfileCard key={index} member={member} />
+            ))}
+          </div>
+        </div>
+      </main>
+    </div>
+
+  );
+}
+
 
 export default Nosotros;

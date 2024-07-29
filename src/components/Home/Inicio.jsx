@@ -10,7 +10,7 @@ function Inicio() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    const endpoint = "https://back.digital-mirage.ar/productos";
+    const endpoint = "https://digital-mirage-backend-old-shape-7317.fly.dev/productos";
 
     axios
       .get(endpoint)

@@ -40,7 +40,7 @@ function App() {
 
               <CartButton />
               <Banner2 />
-<Footer />
+              <Footer />
             </div>
           )}
         </BrowserRouter>

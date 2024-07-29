@@ -60,7 +60,7 @@ const Faq = () => {
   ];
 
   return (
-    
+
     <div className="w-full bg-gray-50 bg-cover" style={{ backgroundImage: `url("/images/faq2.avif")` }}>
       {/* :TITLE & IMAGE */}
       <div className="my-8 mx-auto max-w-4xl flex flex-col items-center">
@@ -74,9 +74,8 @@ const Faq = () => {
           <div key={index}>
             {/* ::Accordion Panel */}
             <div
-              className={`w-full border-b-2 border-sky-600 text-teal-600 hover:bg-amber-100 hover:text-teal-600 ${
-                openAccordion === index ? "bg-teal-600 text-amber-100" : ""
-              }`}
+              className={`w-full border-b-2 border-sky-600 text-teal-600 hover:bg-amber-100 hover:text-teal-600 ${openAccordion === index ? "bg-teal-600 text-amber-100" : ""
+                }`}
             >
               <button
                 onClick={() => toggleAccordion(index)}
@@ -84,9 +83,8 @@ const Faq = () => {
               >
                 <span className="text-lg md:text-xl text-left font-semibold">{faq.question}</span>
                 <svg
-                  className={`flex-shrink-0 ml-2 w-7 h-7 text-sky-600 group-hover:text-white ${
-                    openAccordion === index ? "transform rotate-180 text-white" : ""
-                  }`}
+                  className={`flex-shrink-0 ml-2 w-7 h-7 text-sky-600 group-hover:text-white ${openAccordion === index ? "transform rotate-180 text-white" : ""
+                    }`}
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
