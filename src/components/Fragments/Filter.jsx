@@ -11,7 +11,8 @@ const categories = [
   'Headphones',
   'Tablet',
   'Motherboard',
-  'Smart Tv'
+  'Smart Tv',
+  'Todos los articulos'
 ];
 
 const Filter = ({ onCategorySelect }) => {
@@ -23,11 +24,22 @@ const Filter = ({ onCategorySelect }) => {
   };
 
   const handleCategoryClick = (category) => {
+    let updatedCategories;
+
     if (selectedCategories.includes(category)) {
-      setSelectedCategories(selectedCategories.filter((c) => c !== category));
+      updatedCategories = selectedCategories.filter((c) => c !== category);
     } else {
-      setSelectedCategories([...selectedCategories, category]);
+      updatedCategories = [...selectedCategories, category];
     }
+
+    setSelectedCategories(updatedCategories);
+
+    if (updatedCategories.length === 0) {
+      onCategorySelect(null);
+    } else {
+      onCategorySelect(updatedCategories[updatedCategories.length - 1]); // Notifica la última categoría seleccionada
+    }
+
   };
 
   const handleCategoryClickAction = (category) => {
@@ -46,7 +58,7 @@ const Filter = ({ onCategorySelect }) => {
               <div
                 className={`category ${selectedCategories.includes(category) ? 'selected' : ''}`}
                 key={index}
-                onClick={() => {handleCategoryClick(category); handleCategoryClickAction(category)}}
+                onClick={() => { handleCategoryClick(category); handleCategoryClickAction(category) }}
               >
                 {category}
               </div>

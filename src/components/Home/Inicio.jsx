@@ -19,15 +19,19 @@ function Inicio() {
       .then((response) => {
         const data = response.data;
         if (selectedCategory) {
-          console.log(data)
-          const filteredData = data.filter(product => product.categoria[0].name.toUpperCase() == selectedCategory.toUpperCase())
-          console.log(filteredData);
-          setProducts(filteredData);
-          setLoading(false);
+
+          if (selectedCategory === "Todos los articulos") {
+            setProducts(data);
+          } else {
+            const filteredData = data.filter(
+              (product) => product.categoria[0].name.toUpperCase() === selectedCategory.toUpperCase());
+            setProducts(filteredData);
+          }
+          
         } else {
           setProducts(data);
-          setLoading(false);
         }
+        setLoading(false);
       })
       .catch((err) => {
         console.error(err);
