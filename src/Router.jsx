@@ -16,7 +16,7 @@ const Router = () => {
     return (
         <div>
             <Routes>
-                <Route exact path="/" element={<Inicio />} />
+                <Route exact path="/Digital-Mirage-Frontend/" element={<Inicio />} />
                 <Route exact path="/acercade" element={<AcercaDe />} />
                 <Route exact path="/categorias" element={<Categorias />} />
                 <Route exact path="/servicios" element={<Servicios />} />
