@@ -1,6 +1,8 @@
-/* Estilos generales (para pantallas más grandes) */
+/* Estilos generales */
 .filter-container {
     position: relative;
+    display: inline-block;
+    /* Esto asegura que el botón y el overlay estén alineados */
 }
 
 .filter-button {
@@ -15,18 +17,35 @@
     float: right;
 }
 
+/* Estilos del overlay */
 .category-filter {
     position: absolute;
-    right: 0;
-    display: flex; /* Mostrar las categorías en línea */
+    top: 100%;
+    /* Coloca el overlay justo debajo del botón */
+    left: 50%;
+    /* Centra horizontalmente el overlay */
+    transform: translateX(-50%);
+    /* Ajusta la posición para centrarlo completamente */
     background-color: #fff;
     border: 1px solid #ccc;
     border-radius: 4px;
     padding: 10px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     animation: fadeIn 0.3s ease-in-out;
+    z-index: 1000;
+    /* Asegura que el overlay esté por encima de otros elementos */
+    width: 220px;
+    /* Ajusta según sea necesario para contener las categorías */
+    max-height: 300px;
+    /* Limita la altura máxima para evitar que se salga de la pantalla */
+    overflow-y: auto;
+    /* Permite el desplazamiento si hay muchas categorías */
+    display: flex;
+    flex-wrap: wrap;
+    /* Las categorías se ajustarán en varias líneas si es necesario */
 }
 
+/* Estilos para las categorías individuales */
 .category {
     margin: 4px;
     padding: 4px 8px;
@@ -34,6 +53,17 @@
     border-radius: 4px;
     cursor: pointer;
     transition: background-color 0.2s;
+    white-space: nowrap;
+    /* Evita que las categorías largas se rompan en varias líneas */
+}
+
+.category:hover {
+    background-color: #f0f0f0;
+}
+
+.selected {
+    background-color: #007bff;
+    color: white;
 }
 
 .category.selected {
@@ -44,6 +74,7 @@
     from {
         opacity: 0;
     }
+
     to {
         opacity: 1;
     }
@@ -56,16 +87,19 @@
     }
 
     .filter-icon {
-        font-size: 18px; /* Reduce el tamaño del icono en dispositivos móviles */
+        font-size: 18px;
+        /* Reduce el tamaño del icono en dispositivos móviles */
     }
 
     .category-filter {
-        padding: 3px; /* Reduce el relleno del filtro en dispositivos móviles */
-        position: relative; /* No fijar el filtro en la pantalla */
-        font-size: 14px; /* Reduce el tamaño del texto */
+        padding: 3px;
+        /* Reduce el relleno del filtro en dispositivos móviles */
+        position: relative;
+        /* No fijar el filtro en la pantalla */
+        font-size: 14px;
+        /* Reduce el tamaño del texto */
         display: flex;
-        flex-wrap: wrap; /* Permitir que las categorías se ajusten en varias filas */
+        flex-wrap: wrap;
+        /* Permitir que las categorías se ajusten en varias filas */
     }
 }
-
-  
