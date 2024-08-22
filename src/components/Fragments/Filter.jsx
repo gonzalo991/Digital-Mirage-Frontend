@@ -46,7 +46,7 @@ const Filter = ({ onCategorySelect }) => {
               <div
                 className={`category ${selectedCategories.includes(category) ? 'selected' : ''}`}
                 key={index}
-                onClick={() => handleCategoryClick(category)}
+                onClick={() => {handleCategoryClick(category); handleCategoryClickAction(category)}}
               >
                 {category}
               </div>
