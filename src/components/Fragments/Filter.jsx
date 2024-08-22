@@ -2,16 +2,19 @@ import React, { useState } from 'react';
 import { BsFilter } from 'react-icons/bs';
 
 const categories = [
-  'Gaming',
-  'Celulares',
-  'Televisores',
-  'Notebooks',
-  'Smartwatch',
-  'Auriculares',
-  'Tablets',
+  'SmartPhone',
+  'TV',
+  'Notebook',
+  'Parlante Inalámbrico',
+  'Consola',
+  'Smart Watch',
+  'Headphones',
+  'Tablet',
+  'Motherboard',
+  'Smart Tv'
 ];
 
-const Filter = () => {
+const Filter = ({ onCategorySelect }) => {
   const [showFilter, setShowFilter] = useState(false);
   const [selectedCategories, setSelectedCategories] = useState([]);
 
@@ -27,8 +30,12 @@ const Filter = () => {
     }
   };
 
+  const handleCategoryClickAction = (category) => {
+    onCategorySelect(category); // Notifica la categoría seleccionada al componente padre
+  };
+
   return (
-    <div className="filter-container">
+    <div className="filter-container ">
       <button className="filter-button" onClick={toggleFilter}>
         <BsFilter className="filter-icon" />
       </button>

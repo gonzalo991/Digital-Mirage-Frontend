@@ -37,7 +37,6 @@ function ProductList({ products, onProductClick }) {
   return (
     <>
       <div className="flex flex-col items-center gap-6 mb-5">
-        <Filter />
         <br></br>
 
         <h2 className="text-2xl font-semibold text-white ">Todos nuestros productos</h2>

@@ -1,51 +1,39 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom'; // Importar useLocation para obtener la palabra clave de la URL
 import ProductList from './ProductList';
 import Buscador from './Buscador';
 
 const Resultados = () => {
-    // Obtiene la palabra clave (keyword) de los parámetros de la URL.
-    let query = new URLSearchParams(window.location.search);
-    let keyword = query.get('keyword');
-
-    // Estado para almacenar la lista completa de productos.
-    const [productos, setProductos] = useState([]);
-
-    // Estado para almacenar los productos filtrados por la palabra clave.
+    const navigate = useNavigate();
+    const location = useLocation(); // Obtener la ubicación actual para acceder a la query string
     const [resultados, setResultados] = useState([]);
-
-    // Estado para indicar si se están cargando los datos.
     const [loading, setLoading] = useState(true);
 
-    // Realiza una solicitud HTTP para obtener la lista completa de productos desde el servidor.
-    useEffect(() => {
-        axios.get("https://digital-mirage-backend-old-shape-7317.fly.dev/productos")
-            .then((response) => {
-                const data = response.data;
-                setProductos(data);
-                setLoading(false); // Finaliza la carga de datos.
-            })
-            .catch((error) => {
-                console.error(`Error al obtener productos: ${error}`);
-                setLoading(false); // Finaliza la carga de datos en caso de error.
-            });
-    }, []);
+    // Obtener la palabra clave de la URL
+    const query = new URLSearchParams(location.search);
+    const keyword = query.get('keyword') || ''; // Manejo de palabra clave vacía
 
-    // Este efecto se activa cuando cambia la palabra clave o la lista de productos.
+    // Realiza la solicitud HTTP para buscar productos que coincidan con la palabra clave
     useEffect(() => {
         if (keyword) {
-            // Filtra los productos que coinciden con la palabra clave (ignorando mayúsculas y minúsculas).
-            const productosFiltrados = productos.filter((prod) =>
-                prod.marca.toLowerCase() === keyword.toLowerCase()
-            );
-            setResultados(productosFiltrados);
+            setLoading(true);
+            axios.get(`https://digital-mirage-backend-old-shape-7317.fly.dev/productos/buscar/${keyword}`)
+                .then((response) => {
+                    setResultados(response.data);
+                    setLoading(false);
+                })
+                .catch((error) => {
+                    console.error(`Error al obtener productos: ${error}`);
+                    setLoading(false);
+                });
         } else {
-            // Si no se proporciona una palabra clave, muestra todos los productos.
-            setResultados(productos);
+            setResultados([]); // Si no hay keyword, limpia los resultados
+            setLoading(false);
         }
-    }, [keyword, productos]);
+    }, [keyword]);
 
-    // Maneja el evento de clic en un producto.
+    // Maneja la navegación al hacer clic en un producto
     const handleProductClick = (productId) => {
         navigate(`/productdetail/${productId}`);
     };
@@ -55,12 +43,13 @@ const Resultados = () => {
             <Buscador /> {/* Componente de búsqueda */}
             {loading ? (
                 <h2>Cargando...</h2> // Muestra "Cargando..." mientras se cargan los datos.
-            ) : (
+            ) : resultados.length > 0 ? (
                 <ProductList products={resultados} onProductClick={handleProductClick} />
-                // Renderiza la lista de productos filtrados.
+            ) : (
+                <h2>No se encontraron productos.</h2> // Mensaje si no hay resultados.
             )}
         </>
     );
-}
+};
 
 export default Resultados;
